@@ -1,23 +1,25 @@
-import { Injectable,NotFoundException } from '@nestjs/common';
-import { Repository } from "typeorm";
-import { User} from "./user.entity";
-import { InjectRepository } from "@nestjs/typeorm";
+import {BadRequestException, Injectable, NotFoundException} from '@nestjs/common';
+import {Repository} from "typeorm";
+import {User} from "./user.entity";
+import {InjectRepository} from "@nestjs/typeorm";
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private repo : Repository<User>) {
+    constructor(@InjectRepository(User) private repo: Repository<User>) {
+    }
+
+    create(email: string, password: string) {
+        const user = this.repo.create({email, password})
+
+        return this.repo.save(user);
   }
 
-  create(email:string, password:string) {
-    const user = this.repo.create({ email, password })
-
-    return this.repo.save(user);
-  }
-
-  findOne(id: number){
-    return this.repo.findOne({
-      where: { id }
-    })
+  findOne(id: number) {
+      if (!id)
+          throw new BadRequestException('Aucun utilisateur connecté !!!')
+      return this.repo.findOne({
+          where: {id}
+      })
   }
 
   find(email: string) {
