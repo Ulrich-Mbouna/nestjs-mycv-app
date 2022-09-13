@@ -3,7 +3,7 @@ POST http://localhost:3004/auth/signup
 content-type: application/json
 
 {
-  "email": "test@test1.com",
+  "email": "test@test7.com",
   "password": "123451"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3004/auth/signin
 content-type: application/json
 
 {
-  "email": "test@test1.com",
+  "email": "test@test3.com",
   "password": "123451"
 }
 
@@ -45,3 +45,6 @@ GET http://localhost:3004/auth/colors/marronfddfdf
 
 ###Get the color
 GET http://localhost:3004/auth/colors
+
+### Test the application start
+GET http://localhost:3004
