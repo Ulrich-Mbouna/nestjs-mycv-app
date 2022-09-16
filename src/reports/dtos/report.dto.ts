@@ -31,4 +31,6 @@ export class ReportDto {
     model: string;
     @Expose()
     mileage: string;
+    @Expose()
+    approved: boolean;
 }
