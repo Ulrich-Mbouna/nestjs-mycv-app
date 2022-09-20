@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="db.sqlite" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+    <script-file value="$PROJECT_DIR$/db.sqlite" />
+    <script-mode>FILE</script-mode>
+    <data-source id="740803aa-4294-4fe9-9c60-60ccc1835306" namespace="schema/&quot;main&quot;" />
+    <method v="2" />
+  </configuration>
+</component>
