@@ -1,14 +1,10 @@
 import {DataSource, DataSourceOptions} from "typeorm";
-import { config } from "dotenv";
-
-config();
-
 
 const dbConfig = {
     synchronize: false,
-    migrations: ["migrations/*.ts"],
+    migrations: ["migrations/*.js"],
     cli: {
-        migrationsDir: './src/migrations'
+        migrationsDir: './migrations'
     }
 };
 
@@ -25,12 +21,14 @@ switch (process.env.NODE_ENV) {
             type: 'sqlite',
             database: 'test.sqlite',
             entities: ['**/*.entity.ts'],
+            migrationsRun:true,
         })
         break;
     case 'production':
         break;
     default:
-        throw new Error('Environement non réconnu !!!')
+        throw new Error('Environnement non reconnu !!!')
 }
 
-export default new DataSource(dbConfig as unknown as DataSourceOptions)
+export const AppDataSource = new DataSource(dbConfig as unknown as DataSourceOptions);
+
