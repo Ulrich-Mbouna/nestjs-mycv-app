@@ -1,6 +1,6 @@
 import { rm } from 'fs/promises';
 import { join } from 'path';
-import { getConnection } from "typeorm";
+import { AppDataSource } from "../typeOrm.config";
 
 global.beforeEach( async () => {
     try {
@@ -11,8 +11,11 @@ global.beforeEach( async () => {
 
 global.afterEach( async () => {
     try {
-        const conn = getConnection();
-        await conn.close();
+        await AppDataSource.destroy();
     }
     catch (err){}
 })
+global.afterAll(async () => {
+// your code here
+// your code here
+}, 100000);
